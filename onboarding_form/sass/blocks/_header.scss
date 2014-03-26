@@ -1,0 +1,381 @@
+@import "../_base/base";
+
+/*******************************************************************************
+ header
+ *******************************************************************************/
+
+.b-header {
+    background: #ffcdab url("../img/bg_low.jpg") no-repeat top center fixed;
+    height: $headerHeight;
+    position: relative;
+    @include background-size(cover);
+    .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("../img/bg_new.jpg") no-repeat top center fixed;
+        @include ie-opacity(0);
+        @include background-size(cover);
+        &.show {
+            @include ie-opacity(1);
+        }
+        &.load {
+            @include ie-opacity(1);
+            @include my-transition(opacity 500ms);
+        }
+    }
+    .b-header-logo {
+        width: 52px;
+        height: 52px;
+        background: #fff;
+        position: absolute;
+        left: 50%;
+        margin: 0;
+        margin-left: -26px;
+        top: 60px;
+        overflow: hidden;
+        @include my-border-radius(50%);
+        @include my-box-shadow(0 0 20px 5px #fff);
+        a {
+            display: block;
+            position: relative;
+            height: 100%;
+            width: 100%;
+            font-size: 0px;
+            text-align: center;
+            opacity: 0;
+        }
+    }
+    &.b-header__sub {
+        background: $colorBackground;
+        height: $headerHeightSub;
+        .b-header-nav {
+            .b-header-nav__menu {
+                li {
+                    a {
+                        color: $colorDarkGrey;
+                        &.a-button {
+                            border-color: $colorDarkGrey;
+                        }
+                        &:hover {
+                            background: getRgba($colorDarkGrey, 0.3);
+                        }
+                    }
+                    &.b-header-nav__search {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        .b-header-logo {
+            width: 72px;
+            height: 72px;
+            background: url(../img/logo-color.png);
+            position: absolute;
+            left: 50%;
+            margin-left: -36px;
+            top: 50px;
+            @include my-border-radius(0);
+            @include my-box-shadow(none);
+        }
+    }
+    &.b-header__login {
+
+        .b-header-nav {
+            .b-header-nav__menu {
+                li {
+                    &.b-header-nav__search {
+                        display: inline-block;
+                        button {
+                            background: url(../img/icons/search-ico-white.png);
+                        } 
+                    }
+                }
+            }
+        }
+    }
+    .b-header-nav {
+        padding-top: 40px;
+        .b-header-nav__menu {
+            @include my-resetList;
+            float: left;
+            li {
+                display: inline-block;
+                vertical-align: middle;
+                a {
+                    display: block;
+                    font-family: $fontBold;
+                    font-size: 14px;
+                    color: #fff;
+                    line-height: 18px;
+                    padding: 0 9px;
+                    text-decoration: none;
+                    &.a-button {
+                        border: 1px solid #fff;
+                        @include my-border-radius(2px);
+                    }
+                    &:hover {
+                        background: rgba(255, 255, 255, 0.3);
+                    }
+                }
+                &.b-header-nav__search {
+                    display: none;
+                    position: relative;
+                    form {
+                        margin: 0;
+                    }
+                    .nav-search__suggest {
+                        width: 254px;
+                        position: absolute;
+                        top: 0;
+                        right: 100%;
+                        .ui-widget-content {
+                            background: getRgba($colorDarkGrey, 0.3);
+                            padding: 10px;
+                            a {
+                                padding: 0;
+                                background: none;
+                                font-family: $fontItalic;
+                                &.ui-state-hover, &.ui-state-focus {
+                                    color: #fff;
+                                }
+                            }
+                        }
+                    }
+                    button {
+                        display: block;
+                        width: 14px;
+                        height: 14px;
+                        border: 0 none;
+                        background: url(../img/icons/search-ico.png);
+                        margin: 3px 8px;
+                    }
+                    input[type="text"] {
+                        @extend .input-text;
+                        visibility: hidden;
+                        width: 0;
+                        position: absolute;
+                        top: 0;
+                        right: 100%;
+                        @include my-transition(all linear 250ms);
+                        z-index: 2;
+                        &:focus {
+                            visibility: visible;
+                            width: 256px;
+                        }
+                    }
+                    &:hover {
+                        input[type="text"] {
+                            visibility: visible;
+                            width: 256px;
+                        }
+                    }
+                }
+            }
+        }
+        .b-header-nav__auth {
+            @extend .b-header-nav__menu;
+            float: right;
+            & > li {
+                margin: 0 0 0 20px;
+            }
+        }
+
+    }
+    .b-header-subnav {
+        margin: 106px 0 0;
+        .b-header-nav__category {
+            @include my-resetList;
+            float: left;
+            > li {
+                display: inline-block;
+                vertical-align: top;
+                padding: 0 0 30px;
+                > a {
+                    display: inline-block;
+                    position: relative;
+                    color: #fff;
+                    font-size: 16px;
+                    font-family: $fontBold;
+                    text-transform: uppercase;
+                    text-decoration: none;
+                    padding: 0 3px;
+                    @include my-border-radius(2px);
+                    margin: 0 12px;
+                    &:after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        left: 50%;
+                        margin-left: -5px;
+                        bottom: -30px;
+                        visibility: hidden;
+                        width: 0;
+                        height: 0;
+                        @include my-transition(all linear 250ms);
+                        border: 5px solid transparent;
+                    }
+                    &:hover, &.active {
+                        background: rgba(255, 255, 255, 0.3);
+                        &:after {
+                            visibility: visible;
+                            border-bottom-color: #fff;
+                        }
+                    }
+                }
+                &:before {
+                    content: ".";
+                    color: #fff;
+                    font-size: 14px;
+                    font-family: $fontBold;
+                }
+                &:first-child {
+                    a {
+                        margin-left: 0;
+                    }
+                    &:before {
+                        display: none;
+                    }
+                }
+
+                .b-header-subnav__dropdawn {
+                    position: absolute;
+                    background: #fff;
+                    visibility: hidden;
+                    opacity: 0;
+                    top: 100%;
+                    left: 0;
+                    width: 910px;
+                    padding: 40px;
+                    margin: 0 -40px;
+                    color: $colorDarkGrey;
+                    font-size: 16px;
+                    font-family: $fontItalic;
+                    @include my-transition(all linear 250ms);
+                    z-index: 1;
+                    b a {
+                        display: inline-block;
+                        font-size: 26px;
+                        color: $colorLink;
+                        font-weight: normal;
+                        margin-bottom: 20px;
+                    }
+                    ul {
+                        @include my-resetList;
+                        margin: 0 0 0 10px;
+                    }
+                    a {
+                        color: $colorDarkGrey;
+                        font-size: 16px;
+                        text-decoration: none;
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                    img {
+                        display: block;
+                        margin: 0 0 10px;
+                    }
+                    .dropdawn_column__1 {
+                        display: inline-block;
+                        vertical-align: top;
+                        width: 320px;
+                    }
+                    .dropdawn_column__2 {
+                        display: inline-block;
+                        vertical-align: top;
+                        margin: 0 -10px;
+                        li {
+                            display: inline-block;
+                            vertical-align: top;
+                            margin: 0 10px;
+                        }
+                    }
+                    &.show {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+
+                }
+
+            }
+        }
+        .b-header-nav__blog {
+            @extend .b-header-nav__category;
+            float: right;
+            > li > a {
+                &:after {
+                    display: none;
+                }
+            }
+        }
+    }
+    .b-header-slogan {
+        text-align: center;
+        margin: 100px 0 35px;
+        color: #fff;
+        letter-spacing: 2px;
+        font-size: 36px;
+        font-family: $fontBold;
+        em {
+            display: block;
+            margin: 15px 0;
+            font-size: 18px;
+            text-align: center;
+            font-style: normal;
+            font-family: $fontItalic;
+            letter-spacing: 2px;
+        }
+    }
+    .b-header-search {
+        margin: 35px auto;
+        width: 486px;
+        height: 30px;
+        input[type="text"] {
+            display: inline-block;
+            vertical-align: top;
+            font-size: 18px;
+            font-family: $fontItalic;
+            background: none;
+            padding: 3px 18px;
+            color: #fff;
+            width: 400px;
+            height: 30px;
+            @include box-sizing(border-box);
+            @include my-placeholder(rgba(255,255,255,0.8));
+            border: 1px solid #fff;
+        }
+        input[type="submit"] {
+            display: inline-block;
+            vertical-align: top;
+            background: none;
+            font-size: 15px;
+            font-family: $fontBold;
+            color: #fff;
+            text-align: center;
+            text-transform: uppercase;
+            width: 86px;
+            height: 30px;
+            margin-left: -1px;
+            border: 1px solid #fff;
+            @include box-sizing(border-box);
+            &:hover, &:active, &:focus {
+                background: rgba(255, 255, 255, 0.3);
+            }
+        }
+        .nav-search__suggest {
+            width: 398px;
+        }
+    }
+    .b-header-search__sug {
+
+    }
+    .a-scroll {
+        bottom: 30px;
+        left: 50%;
+        margin-left: -12px;
+    }
+
+}

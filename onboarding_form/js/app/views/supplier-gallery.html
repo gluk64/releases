@@ -1,0 +1,25 @@
+<div class="b-main-button__wrap cf">
+    <a class="b-mb-book_button left" href="#/">BACK</a>
+    <a class="b-mb-book_button left" ng-if="api.model.onboarded" href="#/about">ABOUT</a>
+    <a class="b-mb-book_button active left" ng-if="api.model.onboarded" href="#/gallery">GALLERY</a>
+    <button ng-class="toggleClass" class="b-mb-book_button right hidden" ng-click="toggle()" type="button"><span ng-if="toggleClass" class="glyphicon glyphicon-ok"></span><span ng-if="!toggleClass" class="glyphicon glyphicon-plus"></span>FOLLOW</button>
+</div>
+<div class="b-main-profile">
+    <h1 class="b-main-subpage__title">{{api.model.companyName}}</h1>
+    <tabset>
+        <tab heading="PHOTOS ({{api.model.gallery.length}})">
+            <ul class="photos">
+                <li ng-repeat="item in api.model.gallery"><img ng-src="{{item.url}}" alt="{{item.description}}"/></li>
+            </ul>
+        </tab>
+        <tab heading="VIDEOS ({{api.model.videos.length}})">
+            <ul class="videos">
+                <li ng-repeat="item in api.model.videos">
+                    {{item}}
+                </li><li><iframe width="96" height="96" src="//www.youtube.com/embed/b_s6elVPws8" frameborder="0" allowfullscreen></iframe></li>
+                <li><iframe src="//player.vimeo.com/video/86015446" width="96" height="96" frameborder="0" allowfullscreen></iframe></iframe></li>
+            </ul>
+        </tab>
+    </tabset>
+
+</div>

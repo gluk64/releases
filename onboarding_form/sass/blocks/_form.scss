@@ -1,0 +1,18 @@
+@import "../_base/base";
+
+.input-text {
+    height: 21px;
+    background: #fff;
+    border: 1px solid $colorDarkGrey;
+    font-size: 15px;
+    font-family: $fontItalic;
+    color: $colorDarkGrey;
+    padding: 0 10px;
+    line-height: 22px;
+    @include box-sizing(border-box);
+    @include my-placeholder(getRgba($colorDarkGrey, 0.5));
+}
+
+input[type="text"]:focus {
+    @include my-placeholder(transparent!important);
+}

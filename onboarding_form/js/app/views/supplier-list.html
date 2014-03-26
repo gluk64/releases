@@ -1,0 +1,52 @@
+
+<span class="spinner" ng-show="api.loading" us-spinner="{lines: 11, radius:10, width:5, length: 7, color: '#ab9b77', left: 0, top: 0}"></span>
+
+<div class="suppliers" ng-hide="api.loading">
+
+<pagination ng-show="api.mode.length > pageSize" total-items="api.model.length" on-select-page="pageChanged(page)" items-per-page="pageSize" page="routeParams.page" max-size="maxSize" class="pagination-sm" boundary-links="false"></pagination>
+
+    <p class="b-mb__sb_no-results" ng-if="!api.model.length" ng-hide="api.loading"><b>Keine Ergebnisse für</b> {{api.query}}</p>
+
+    <div ng-repeat="(i, item) in api.model | startFrom:pageSize*(routeParams.page-1) | limitTo:pageSize" class="b-main-block b-main__sb b-animate cf">
+    <b class="b-main__sb_number">{{ item.index }}</b>
+
+    <div class="b-main__sb_left">
+        <div class="b-main__sb_img"><img ng-src="{{ item.avatarUrl }}" alt="{{ item.companyName }}"/></div>
+        <div class="b-main__sb_social">
+            <div class="fb-like" data-href="{{ item.fbProfileUrl }}" data-layout="button" data-action="like" data-show-faces="true" data-share="false"></div>
+        </div>
+        <div class="b-main__sb_fb">
+            <b>13</b>
+            <p>People recommend <strong>{{item.companyName}}</strong></p>
+            <ul class="peoples-list">
+                <li><img ng-src="/assets/img/dummy/supplier/recomended/1.jpg" alt=""/></li>
+                <li><img ng-src="/assets/img/dummy/supplier/recomended/2.jpg" alt=""/></li>
+                <li><img ng-src="/assets/img/dummy/supplier/recomended/3.jpg" alt=""/></li>
+                <li><img ng-src="/assets/img/dummy/supplier/recomended/4.jpg" alt=""/></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="b-mb__sb_info">
+        <a class="b-main-block__title" ng-href="{{ item.profileUrl }}">{{ item.companyName }}</a>
+        <div class="b-mb__tags">
+            <ul class="b-main-tags">
+                <li ng-repeat="tag in item.disciplinesName">{{ tag }}</li>
+            </ul>
+        </div>
+        <div class="b-mb__sb_text">
+            <a ng-href="http://{{ item.website }}">{{ item.website}}</a>
+            <address>
+                <p>{{ item.street }} {{ item.house }}</p>
+                <p>{{ item.zip }} {{ item.city }}</p>
+            </address>
+            <p class="phone">{{ item.phone1 }}</p>
+        </div>
+        <a class="b-mb-book_button" ng-href="{{ item.profileUrl }}">MEHR</a>
+    </div>
+
+</div>
+
+<pagination ng-show="api.model.length > pageSize" total-items="api.model.length" on-select-page="pageChanged(page)" items-per-page="pageSize" page="routeParams.page" max-size="maxSize" class="pagination-sm" boundary-links="false"></pagination>
+
+</div>

@@ -1,0 +1,421 @@
+/**
+ * Naming convention prefix:
+ *
+ * 'c-' - container block
+ * 'b-' - general block
+ * 'w-' - wrapper block
+ *
+ */
+
+@import "../_base/base";
+@import "fonts";
+
+/*******************************************************************************
+ global rules
+ *******************************************************************************/
+html {
+    height: 100%;
+    min-width: $containerWidth;
+    background: $colorBackground;
+}
+
+body {
+    position: relative;
+    @if $ie < 7 {
+        height: auto !important;
+        height: 100%;
+    }
+    min-height: 100%;
+    color: $colorText;
+    font-family: $fontBody;
+    font-size: $fontSize;
+    line-height: $fontLineHeight;
+
+    @if $ie > 20 {
+        -webkit-font-smoothing: antialiased !important;
+    }
+
+    * {
+        @include my-selection($colorText, getRgba($colorText, 0.3));
+    }
+}
+
+#wrapper {
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+.container {
+    position: relative;
+    max-width: $containerWidth;
+    padding: 0 10px;
+    margin: 0 auto;
+}
+.old {
+    max-width: 990px;
+    .b-main-sidebar {
+        width: 320px;
+    }
+    .b-main-content {
+        width: 628px;
+    }
+}
+.b-main-sidebar {
+    width: 328px;
+}
+.b-main-content {
+    width: 560px;
+}
+.w-blocks {
+    margin: 80px -20px;
+    &:last-child {
+        margin-bottom: 100px;
+    }
+}
+.w-blocks-header {
+    position: relative;
+    .a-see_more {
+        position: absolute;
+        top: 0;
+        right: 20px;
+        line-height: 37px;
+        letter-spacing: 2px;
+    }
+}
+.w-blocks__tip {
+    margin: 120px -5px 100px;
+}
+.w-blocks__search {
+    margin: -35px 0 0;
+}
+.w-blocks__sub {
+    margin: 60px 0;
+    .b-main-sidebar {
+        .b-main-block {
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+    &.center {
+        text-align: center;
+    }
+}
+.w-blocks__profile {
+    margin: 60px 0;
+}
+.w-blocks__content {
+    margin: 60px -10px;
+    &:first-child {
+        margin-top: 0;
+    }
+}
+.w-center {
+    width: 600px;
+    margin: 15px auto 120px;
+    text-align: center;
+    .w-left {
+        margin: 42px 0;
+    }
+    .w-right {
+        margin: 42px 0;
+    }
+}
+.w-left {
+    float: left;
+}
+.w-right {
+    float: right;
+}
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    margin-left: -10px;
+    top: 0;
+    width: 50px;
+    height: 50px;
+}
+.w-blocks__search {
+    .spinner {
+        top: 100px;
+    }
+}
+
+.affix {
+    position: fixed;
+    top: 0;
+}
+.affix-bottom {
+    position: absolute;
+}
+
+article {
+    margin-bottom: 28px;
+    .b-main-block__title, h2 {
+        font-size: 20px;
+        text-transform: uppercase;
+        margin: 20px 0;
+        color: #222;
+        font-family: $fontBold;
+        font-weight: normal;
+        letter-spacing: 2px;
+        text-align: center;
+        display: block;
+        &:first-child {
+            margin-top: 0;
+        }
+    }
+    p {
+        &.two-col {
+            @include column-count(2);
+            @include column-gap(20px);
+        }
+        &.three-col {
+            @include column-count(3);
+            @include column-gap(20px);
+        }
+    }
+    &.col {
+        float: left;
+        margin: 0;
+        &.col-50 {
+            width: 49%;
+        }
+        & + .col-50 {
+            width: 48.8%;
+            margin-left: 2.2%;
+        }
+        &.col-33 {
+            width: 32%;
+        }
+        & + .col-33 {
+            width: 31.8%;
+            margin-left: 2.2%;
+        }
+        &.col-66 {
+            width: 66%;
+        }
+        & + .col-66 {
+            width: 65.8%;
+            margin-left: 2.2%;
+        }
+    }
+}
+
+.mychart {
+    position: relative;
+    display: inline-block;
+    width: 320px;
+    height: 220px;
+
+    .nvd3.nv-pie path {
+        stroke-width: 0;
+    }
+    .nv-label text {
+        font-size: 10px;
+        font-family: $fontBold;
+        text-transform: uppercase;
+    }
+}
+
+textarea:focus,
+input:focus { outline: none; }
+
+input, textarea, th, td {
+    padding: 0;
+    border: 0 none;
+}
+
+fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+b, h1, h2, h3, h4, h5, h6, th {
+    font-weight: normal;
+}
+
+a {
+    color: $colorLink;
+    font-size: 15px;
+    font-family: $fontItalic;
+    @include my-transition(color .2s);
+
+    &:hover {
+        text-decoration: none;
+    }
+    &.default {
+        font-family: $fontBody;
+    }
+}
+
+p {
+    margin: 0;
+    text-align: justify;
+    font-family: $fontRegular;
+    font-size: 16px;
+}
+
+.p-gold {
+    margin: 20px 0;
+    font-size: 18px;
+    line-height: 1.2;
+    color: $colorContent;
+}
+
+.p-center {
+    text-align: center;
+}
+
+.p-margin {
+    margin-top: 30px;
+}
+
+.img-article {
+    margin-bottom: 28px;
+}
+
+.strike {
+    text-decoration: line-through;
+}
+
+address {
+    font-style: normal;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+    outline: none; 
+}
+
+.facebook_widget {
+    b {
+        display: inline-block;
+        font-size: 28px;
+        font-family: $fontBold;
+        font-weight: normal;
+        margin-right: 5px;
+    }
+    .peoples-list {
+        @include my-resetList;
+        margin-top: 20px;
+        li {
+            display: inline-block;
+            vertical-align: top;
+            img {
+                display: block;
+            }
+        }
+    }
+}
+
+.b-main-block .fn-editable {
+    display: none;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    font-family: $fontBody;
+    font-size: inherit;
+    text-align: right;
+    .glyphicon {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        z-index: 1;
+    }
+    .input-wrapper {
+        text-align: left;
+        background: #fff;
+        position: absolute;
+        padding: 5px;
+        border: 1px solid $colorDarkGrey;
+        margin: 0 4px 0 -4px;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 2;
+
+        input[type="text"] {
+            width: 100%;
+            height: 30px;
+            font-size: 21px;
+            text-transform: uppercase;
+            margin: 5px 0 15px;
+            @include my-box-shadow(0px 0px 1px #c0bdb7);
+        }
+        textarea {
+            width: 100%;
+            font-size: 21px;
+            resize: vertical;
+        }
+    }
+}
+.admin-controls {
+    position: relative;
+    display: inline-block;
+    .btn-group {
+        margin: 5px 10px;
+    }
+    &:hover {
+        .fn-editable {
+            display: inline-block;
+        }
+    }
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+
+/* clearfix */
+// http://css-live.ru/tricks/novaya-alternativa-clearfix-u-i-overflowhidden.html
+.cf {
+    position: relative;
+    display: table;
+}
+
+doesnotexist:-o-prefocus, .operaFix100 { // opera hack
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.cf:after {
+    content: '. .';
+    display: block;
+    word-spacing: 99in;
+    height: 0;
+    overflow: hidden;
+
+    /* Opera bugfix*/
+    font-size: 0.05em;
+    //font: .13em/0 sans-serif;
+    line-height: 0.05em;
+}
+
+@if $ie < 8 {
+/* Clearfix for IE 6/7 (trigger hasLayout) */
+    .cf { zoom: 1; }
+}
+
+@import "_form.scss";
+@import "_buttons.scss";
+@import "_carousel.scss";
+@import "_pagination.scss";
+@import "_glyphicons.scss";
+@import "_tagsinput.scss";
+@import "_slider.scss";
+@import "_header.scss";
+@import "_login.scss";
+@import "_main.scss";
+@import "_sidebar.scss";
+@import "_footer.scss";

@@ -1,0 +1,249 @@
+
+// ******************************************************************************
+// * css3 features
+// *****************************************************************************/
+@mixin my-animation($params) {
+    -moz-animation: $params;
+    -ms-animation: $params;
+    -o-animation: $params;
+    -webkit-animation: $params;
+    animation: $params;
+}
+
+@mixin my-keyframes($name) {
+    @-webkit-keyframes #{$name} { @content; }
+    @-moz-keyframes #{$name} { @content; }
+    @-o-keyframes #{$name} { @content; }
+    @-ms-keyframes #{$name} { @content; }
+    @keyframes #{$name} { @content; }
+}
+
+@mixin my-placeholder($color) {
+    @if $ie > 9 {
+        &:-moz-placeholder {
+            color: $color;
+            @content;
+        }
+        &::-moz-placeholder {
+            color: $color;
+            @content;
+        }
+        &:-ms-placeholder {
+            color: $color;
+            @content;
+        }
+        &::-webkit-input-placeholder {
+            color: $color;
+            @content;
+        }
+        &.placeholder {
+            color: $color;
+            @content;
+        }
+    }
+}
+
+@mixin my-selection($color, $backgroundColor) {
+    @if $ie > 9 {
+        &::-moz-selection {
+            color: $color;
+            background-color: $backgroundColor;
+            @content;
+        }
+        &::-webkit-selection {
+            color: $color;
+            background-color: $backgroundColor;
+            @content;
+        }
+        &::-ms-selection {
+            color: $color;
+            background-color: $backgroundColor;
+            @content;
+        }
+        &::selection {
+            color: $color;
+            background-color: $backgroundColor;
+            @content;
+        }
+    }
+}
+
+@mixin my-border-radius($param, $pos: 1) {
+    @if $ie > 8 {
+        @include border-radius($param);
+    }
+//@else {
+//    @include css3Pie($pos);
+//}
+}
+
+@mixin my-box-shadow($shadow1, $shadow2:false, $shadow3:false, $shadow4:false, $ieTodo: true) {
+    @if $ie > 8 {
+        $shadow: compact($shadow1, $shadow2, $shadow3, $shadow4);
+        @include box-shadow($shadow);
+    } @else if $ieTodo == true {
+    /* TODO: make box-shadow for IE #{$ie} */
+    }
+}
+
+@mixin my-linear-gradient($color1, $color2, $color3: false, $color4: false) {
+    $colors: compact($color1, $color2, $color3, $color4);
+
+    @if $ie < 10 {
+        @include filter-gradient($color1, $color2);
+    } @else {
+        @include background-image(linear-gradient($colors));
+    }
+}
+
+// Media Queries
+// $type 'max', 'min'
+// $value number, percentage
+@mixin my-media-queries($type, $value) {
+    @if $type == 'max' {
+        @media screen and (max-width: $value) {
+            @content;
+        }
+    }
+    @if $type == 'min' {
+        @media screen and (min-width: $value) {
+            @content;
+        }
+    }
+}
+
+@mixin my-transition($transition1, $transition2: false, $transition3: false, $transition4: false) {
+    @if $ie > 8 {
+        $transition: compact($transition1, $transition2, $transition3, $transition4);
+        @include transition($transition);
+    }
+}
+
+
+// ******************************************************************************
+// * fallback (ie features)
+// *****************************************************************************/
+
+@mixin ie-css3Pie($position: 1) {
+    @if $ie < 10 {
+        @if $position == 1 {
+            position: relative;
+        }
+        behavior: url(#{$piePath});
+    }
+}
+
+@mixin ie-box-shadow($color, $direction: 90, $strength: 1) {
+    @if $ie < 9 {
+        $hex: ie-hex-str($color);
+        filter: progid:DXImageTransform.Microsoft.Shadow(color='#{$hex}', Direction=#{$direction}, Strength=#{$strength});
+        @if $ie < 8 { zoom: 1; }
+    }
+}
+
+@mixin ie-after($ieVersion: 7, $ieClassPrefix: '') {
+    @if $ie > $ieVersion {
+        &:after { @content; }
+    } @else {
+        .#{$ieClassPrefix}after { @content; }
+    }
+}
+
+@mixin ie-before($ieVersion: 7, $ieClassPrefix: '') {
+    @if $ie > $ieVersion {
+        &:before { @content; }
+    } @else {
+        .#{$ieClassPrefix}before { @content; }
+    }
+}
+
+@mixin ie-inlineBlock() {
+    @if $ie > 7 {
+        display: inline-block;
+    } @else {
+        display: inline;
+        zoom: 1;
+    }
+}
+
+@mixin ie-opacity($var) {
+    @if $ie > 8 {
+        opacity: $var;
+    } @else {
+        filter: alpha(opacity = $var * 100);
+    }
+}
+
+@mixin ie-background-opacity($color, $opacity) {
+    @if $ie == 7 {
+        @include rgba-background(rgba($color, $opacity));
+    } @else if $ie == 8 {
+        @include rgba-background-inline(rgba($color, $opacity));
+    } @else {
+        background: rgba($color, $opacity);
+    }
+}
+
+@mixin ie-justify {
+    text-align: justify;
+    @if $ie < 9 {
+        text-justify: newspaper;
+        zoom: 1;
+    }
+}
+
+
+// ******************************************************************************
+// * images
+// *****************************************************************************/
+@mixin image-dimensions($file) {
+    width: image-width($file);
+    height: image-height($file);
+}
+
+// ******************************************************************************
+// * base64
+// *****************************************************************************/
+@mixin base64($file, $params: 0 0, $repeat: no-repeat, $color: transparent) {
+    @if ($isInlineImages == true) {
+        @if $color == transparent {
+            background-image: inline-image('css/base64/#{$file}.png');
+
+            @if $params == false {} @else {
+                background-position: $params;
+            }
+
+            @if $repeat == false {} @else {
+                background-repeat: $repeat;
+            }
+
+        } @else {
+            background: $color inline-image('css/base64/#{$file}.png') $params $repeat;
+        }
+
+    } @else {
+        background: $color url('../img/css/base64/#{$file}.png') $params $repeat;
+    }
+}
+
+@mixin base64WithDimensions($file, $params: 0 0, $repeat: no-repeat, $color: transparent) {
+    @include image-dimensions('../img/css/base64/#{$file}.png');
+    @include base64($file, $params: 0 0, $repeat: no-repeat, $color: transparent);
+}
+
+// ******************************************************************************
+// * sprites
+// *****************************************************************************/
+@mixin spriteWithDimensions($sprite, $item, $x: 0, $y: 0, $params: no-repeat) {
+    @include image-dimensions(sprite-file($sprite, $item));
+    background: sprite($sprite, $item, $x, $y) $params;
+}
+
+// ******************************************************************************
+// * other
+// *****************************************************************************/
+@mixin my-resetList($m: 0, $p: 0) {
+    list-style: none;
+    margin: $m;
+    padding: $p;
+}

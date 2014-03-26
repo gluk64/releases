@@ -1,0 +1,141 @@
+@import "../_base/base";
+
+/*******************************************************************************
+ * footer
+ *******************************************************************************/
+
+.b-footer {
+
+    .container {
+        border-top: 1px solid $colorDarkGrey;
+        }
+    .b-footer-nav {
+        margin: 40px 0;
+        .b-footer-nav__column {
+            float: left;
+            margin: 0 85px 0 0;
+            text-align: left;
+            b {
+                display: block;
+                font-family: $fontBold;
+                color: $colorDarkGrey;
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+            ul {
+                @include my-resetList;
+                position: relative;
+
+                li a {
+                    color: $colorDarkGrey;
+                    font-family: $fontItalic;
+                    font-size: 15px;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+            }
+            &:last-child {
+                float: right;
+            }
+        }
+    }
+    .b-footer-snav {
+        margin-top: 40px;
+        padding-bottom: 60px;
+        text-align: center;
+        ul.b-footer-nav__menu {
+            @include my-resetList;
+            display: inline-block;
+            vertical-align: top;
+            li {
+                display: inline-block;
+                vertical-align: top;
+                a {
+                    color: $colorDarkGrey;
+                    font-family: $fontItalic;
+                    padding: 0 8px;
+                    font-size: 15px;
+                    text-decoration: none;
+                    &:hover {
+                        text-decoration: underline;
+                    }
+                }
+                &:before {
+                    content: ".";
+                    color: $colorDarkGrey;
+                    font-size: 15px;
+                    font-family: $fontItalic;
+                }
+                &:first-child {
+                    &:before {
+                        display: none;
+                    }
+                }
+            }
+
+        }
+    }
+    .b-footer-social {
+        width: 330px;
+        display: inline-block;
+        vertical-align: top;
+        margin: 20px 20px 20px 0;
+        text-align: left;
+        b {
+            line-height: 26px;
+            font-family: $fontBold;
+            display: inline-block;
+            font-size: 13px;
+            color: $colorDarkGrey;
+            margin-right: 10px;
+        }
+        .b-footer-social__list {
+            @include my-resetList;
+            display: inline-block;
+            vertical-align: top;
+            li {
+                display: inline-block;
+                vertical-align: top;
+                margin: 0 2px;
+                a {
+                    display: block;
+                    img {
+                        display: block;
+                        width: 26px;
+                        height: 26px;
+                    }
+                }
+            }
+        }
+    }
+    .b-footer-newsletter {
+        @extend .b-footer-social;
+        width: auto;
+        .b-footer-newsletter__email {
+            display: inline-block;
+            vertical-align: top;
+            margin: 2px 0 0;
+            input[type='text'] {
+                width: 178px;
+                height: 22px;
+                padding: 0 10px;
+                border: 1px solid $colorDarkGrey;
+                @include my-border-radius(2px);
+                color: $colorDarkGrey;
+                font-size: 15px;
+                font-family: $fontItalic;
+                @include box-sizing(border-box);
+                background: none;
+            }
+            input[type='submit'] {
+                @extend .b-mb-book_button;
+                margin: 0 0 0 -1px;
+                height: 22px;
+                vertical-align: top;
+                text-transform: none;
+            }
+        }
+    }
+}

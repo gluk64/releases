@@ -1,0 +1,70 @@
+<div class="b-main-button__wrap cf">
+    <a class="b-mb-book_button left" href="#/">BACK</a>
+    <a class="b-mb-book_button active left" ng-if="api.model.onboarded" href="#/about">ABOUT</a>
+    <a class="b-mb-book_button left" ng-if="api.model.onboarded" href="#/gallery">GALLERY</a>
+    <button ng-class="toggleClass" class="b-mb-book_button right hidden" ng-click="toggle()" type="button"><span ng-if="toggleClass" class="glyphicon glyphicon-ok"></span><span ng-if="!toggleClass" class="glyphicon glyphicon-plus"></span>FOLLOW</button>
+</div>
+<div ng-if="api.model.onboarded" class="b-main-profile about">
+    <h1 class="b-main-subpage__title">{{api.model.companyName}}</h1>
+    <p class="p-center">Teaching since 2004.</p>
+    <p class="p-center">Has taught over 2,000 classes to date.</p>
+    <div class="w-blocks__profile">
+        <div class="quote">"I have been a seeker and I still am, but I stopped asking the books
+            and the stars. I started listening to the teaching of my soul."<b class="author">&mdash; RUMI</b></div>
+    </div>
+    <div class="w-blocks__profile">
+        <article id="who-i-am">
+            <h2 class="b-main-subpage__subtitle">WHO I AM</h2>
+            <p class="three-col">{{api.model.whoWeAre}}</p>
+        </article>
+    </div>
+    <div class="w-blocks__profile">
+        <div class="b-main-vb">
+            <img ng-src="/assets/img/dummy/supplier/video-about.jpg" alt=""/>
+        </div>
+    </div>
+    <div class="w-blocks__profile">
+        <article id="what-i-teach">
+            <h2 class="b-main-subpage__subtitle">WHAT I TEACH</h2>
+            <p class="two-col">{{api.model.whatITeach}}</p>
+        </article>
+    </div>
+    <div class="w-blocks__profile cf">
+        <article id="how-i-teach" class="col col-50">
+            <h2 class="b-main-subpage__subtitle">HOW I TEACH</h2>
+            <p>{{api.model.howWeTeach}}</p>
+        </article>
+        <article id="where-i-learned" class="col col-50">
+            <h2 class="b-main-subpage__subtitle">WHERE I LEARNED</h2>
+            <p>{{api.model.whereILearned}}</p>
+        </article>
+    </div>
+    <div class="w-blocks__profile cf">
+        <article id="what-you-get" class="col col-66">
+            <h2 class="b-main-subpage__subtitle">WHAT YOU GET FROM MY CLASSES</h2>
+            <p class="two-col">{{api.model.whatYouGet}}</p>
+        </article>
+        <article id="who-i-teach" class="col col-33">
+            <h2 class="b-main-subpage__subtitle">WHO I TEACH</h2>
+            <p>{{api.model.whoWeTeach}}</p>
+        </article>
+    </div>
+    <div id="where-i-teach" class="w-blocks__profile cf">
+        <h2 class="b-main-subpage__subtitle">WHERE I TEACH</h2>
+        <div class="b-main-profile__map">
+            <img ng-src="/assets/img/dummy/supplier/map-about.jpg" alt=""/>
+        </div>
+        <article class="col col-33">
+            <span ng-show="api.model.canVisitHomes" class="can-option"><span class="glyphicon glyphicon-ok"></span>Visit Private Homes</span>
+            <span ng-show="api.model.canVisitCompanies" class="can-option"><span class="glyphicon glyphicon-ok"></span>Visit Companies</span>
+        </article>
+        <article class="col col-33">
+            <address>
+                <p>{{api.model.street}} {{api.model.house}}</p>
+                <p>{{api.model.zip}} {{api.model.city}}</p>
+                <p>{{api.model.phone1}}</p>
+            </address>
+        </article>
+    </div>
+</div>
+

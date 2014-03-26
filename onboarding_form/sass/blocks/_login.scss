@@ -1,0 +1,212 @@
+@import "../_base/base";
+
+.b-header__login {
+    background: #624d40 url(../img/bg_login_low.jpg) no-repeat top center fixed;
+    @include background-size(cover);
+    height: $headerHeightLogin;
+    .bg {
+        background: url(../img/bg_login.jpg) no-repeat top center fixed;
+        @include background-size(cover);
+    }
+    .b-header-slogan {
+        margin-top: 150px;
+    }
+}
+.b-header__signup {
+    @extend .b-header__login;
+    background: #789abc url(../img/bg_signup_low.jpg) no-repeat top center fixed;
+    @include background-size(cover);
+    .bg {
+        background: url(../img/bg_signup.jpg) no-repeat top center fixed;
+        @include background-size(cover);
+    }
+}
+.b-main {
+    .b-main-login__features {
+        @include my-resetList;
+        margin: 20px 0;
+        font-family: $fontItalic;
+        color: $colorLink;
+        font-size: 26px;
+        text-align: center;
+        li {
+            display: inline-block;
+            vertical-align: top;
+            margin: 0 20px;
+        }
+    }
+    .b-main-login__steps {
+        @include my-resetList;
+        position: relative;
+        &:before {
+            content: "";
+            display: block;
+            border-bottom: 2px solid $colorText;
+            position: absolute;
+            top: 24px;
+            left: 16.5%;
+            right: 16.5%;
+            z-index: 0;
+        }
+        li {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            z-index: 1;
+            width: 33%;
+            .circle {
+                display: table;
+                width: 45px;
+                height: 45px;
+                margin: 0 auto;
+                border: 2px solid $colorText;
+                background: #fff;
+                @include my-border-radius(50%);
+                text-align: center;
+                font-family: $fontBold;
+                font-size: 20px;
+                color: $colorText;
+                b {
+                    display: table-cell;
+                    vertical-align: middle;
+                }
+            }
+            p {
+                margin: 10px 0;
+                text-align: center;
+            }
+        }
+    }
+    .b-main-login__partners {
+        @include my-resetList;
+        position: relative;
+        margin: 40px 0 20px;
+        li {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            text-align: center;
+            width: 290px;
+            img {
+                display: inline-block;
+                width: 180px;
+                height: 180px;
+                @include my-border-radius(50%);
+            }
+            em {
+                display: inline-block;
+                margin: 20px 0;
+                font-size: 20px;
+                letter-spacing: 1px;
+                padding: 0 25px;
+                color: $colorDarkGrey;
+                font-style: normal;
+                font-family: $fontItalic;
+            }
+            p {
+                text-align: center;
+                color: $colorLight;
+                b {
+                    display: block;
+                    font-size: 14px;
+                    font-family: $fontBold;
+                    text-transform: uppercase;
+                }
+                span {
+                    display: block;
+                    margin: 0;
+                    font-size: 16px;
+                    font-family: $fontItalic;
+                }
+            }
+            & + li {
+                margin-left: 20px;
+            }
+        }
+    }
+    .b-main-login__title {
+        margin: 20px 0;
+        font-size: 36px;
+        font-family: $fontBold;
+        color: $colorLink;
+        text-transform: uppercase;
+        & + .b-main-login__features {
+            font-size: 16px;
+            color: $colorText;
+            li {
+                margin: 0 10px;
+            }
+        }
+    }
+    .b-main-login__form {
+        width: 450px;
+        margin: 40px auto;
+        .form-wrapper {
+            position: relative;
+            margin: 20px 0;
+            text-align: left;
+            label {
+                float: left;
+                font-size: 14px;
+                font-family: $fontRegular;
+                width: 100px;
+            }
+            span {
+                float: right;
+                width: 328px;
+                margin: 5px 0 -15px;
+                font-size: 13px;
+                font-family: $fontRegular;
+                color: $colorLight;
+            }
+            input[type="text"], select {
+                float: right;
+                width: 328px;
+                height: 20px;
+                border: 1px solid $colorLight;
+                font-size: 14px;
+                font-family: $fontRegular;
+                padding: 2px 10px 0;
+                @include my-border-radius(2px);
+                @include box-sizing(border-box);
+                @include my-placeholder(getRgba($colorDarkGrey, 0.5));
+            }
+            .form-radio {
+                width: auto;
+                margin-left: 22px;
+                font-family: $fontItalic;
+                font-size: 15px;
+                color: $colorDarkGrey;
+                input[type="radio"] {
+                    margin: 2px 5px 0 0;
+                    vertical-align: top;
+                }
+            }
+            select {
+                padding: 0;
+            }
+            .form_button {
+                @extend .b-mb-book_button;
+                display: block;
+                min-width: 136px;
+                margin: 20px auto;
+            }
+            p {
+                font-size: 13px;
+                color: $colorLink;
+                text-align: center;
+                a {
+                    font-size: 15px;
+                    color: $colorDarkGrey;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    em {
+        font-style: normal;
+        font-family: $fontItalic;
+        font-size: 16px;
+        color: $colorDarkGrey;
+    }
+}

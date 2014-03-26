@@ -1,0 +1,167 @@
+@import "../_base/base";
+
+/*******************************************************************************
+ * sidebar
+ *******************************************************************************/
+
+.b-main-sidebar {
+    .b-main-block {
+        margin: 42px 0;
+        &:first-child {
+            margin-top: 84px;
+        }
+    }
+    .b-main-widget {
+        background: #fff;
+        padding: 18px 8px 16px;
+        margin: 0 0 15px;
+
+        .b-main-widget__title {
+            text-align: center;
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: $colorContent;
+            font-family: $fontItalic;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+    }
+    .b-main-newsletter {
+
+        input[type="text"] {
+            vertical-align: top;
+            padding: 5px 7px 0;
+            width: 190px;
+            height: 25px;
+            border: 2px solid #d3d4d6;
+            color: $colorContent;
+            font-family: $fontItalic;
+        }
+        input[type="submit"] {
+            vertical-align: top;
+            width: 92px;
+            height: 34px;
+            color: #fff;
+            background: $colorContent;
+            font-size: 14px;
+            font-family: $fontBold;
+            text-transform: uppercase;
+        }
+    }
+}
+.b-main-sidebar__block {
+    margin: 0 0 40px;
+    .b-main-subpage__subtitle {
+        text-align: left;
+    }
+    .b-main-sidebar__fb,
+    .b-main-sidebar__vb,
+    .b-main-sidebar__map, {
+        margin: 20px 0 10px;
+    }
+    p {
+        text-align: left;
+        line-height: 1.5;
+    }
+    address {
+        margin-bottom: 20px;
+    }
+    .a-see_more {
+        margin-top: 10px;
+    }
+    .b-main-sidebar__fb {
+        @extend .facebook_widget;
+    }
+}
+.b-main-sidebar__title {
+    font-size: 18px;
+    font-family: $fontBold;
+    font-weight: normal;
+    color: $colorDarkGrey;
+    margin: 20px 0;
+}
+.b-main-search__block {
+    margin: 25px 0;
+
+    &:first-child {
+        margin-top: 0;
+        padding-top: 25px;
+    }
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    &.b-main-search__filter {
+        text-align: center;
+        select {
+            width: 180px;
+        }
+
+    }
+    .b-main-search__map {
+        height: 200px;
+        margin: 0 0 25px;
+        p {
+            text-align: center;
+            text-transform: uppercase;
+            a {
+                font-family: $fontBody;
+                text-decoration: none;
+            }
+        }
+    }
+
+    ul.b-main-search__subdiscipline {
+        @include my-resetList;
+        margin: 0 0 20px;
+        li {
+            position: relative;
+            margin: 4px 0;
+            float: left;
+            width: 50%;
+        }
+    }
+
+    label {
+        font-size: 15px;
+        color: $colorDarkGrey;
+        font-family: $fontItalic;
+        padding: 0 0 0 26px;
+        line-height: 15px;
+    }
+    input[type="checkbox"] {
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 1px;
+        left: 0;
+    }
+
+    input[type="text"] {
+        @extend .input-text;
+        margin: 0 6px 20px 0;
+    }
+    input[type="submit"] {
+        @extend .b-mb-book_button;
+        margin: 20px 0;
+    }
+    .b-ms_input-wo {
+        width: 75px;
+    }
+    .b-ms_input-was {
+        width: 178px;
+    }
+    .b-main-search__popular {
+        @include my-resetList;
+        margin: 0;
+
+        li {
+            a {
+                @extend .b-main-sidebar__title;
+                text-decoration: none;
+                margin: 0;
+            }
+        }
+    }
+}

@@ -1,0 +1,296 @@
+<div class="b-main-button__wrap cf">
+    <a class="b-mb-book_button left" ng-if="api.model.onboarded" href="#/about">ABOUT</a>
+    <a class="b-mb-book_button left" ng-if="api.model.onboarded" href="#/gallery">GALLERY</a>
+    <button ng-class="toggleClass" class="b-mb-book_button right hidden" ng-click="toggle()" type="button"><span ng-if="toggleClass" class="glyphicon glyphicon-ok"></span><span ng-if="!toggleClass" class="glyphicon glyphicon-plus"></span>FOLLOW</button>
+</div>
+<div class="b-main-profile">
+    <h1 class="b-main-subpage__title">{{api.model.companyName}}</h1>
+    <div class="disciplines">
+        <span ng-if="api.model.type == 'teacher'">I teach </span>
+        <span ng-if="api.model.type == 'studio'">We studio </span>
+        <ul>
+            <li ng-repeat="item in api.model.disciplinesName"><a href="/{{item}}">{{item}}</a></li>
+        </ul>
+    </div>
+    <div class="w-blocks__profile cf">
+        <div class="w-left">
+            <div class="b-main-sidebar">
+                <div ng-if="api.model.onboarded" class="b-main-sidebar__block">
+                    <h2 class="b-main-subpage__subtitle">WHO I AM</h2>
+                    <div class="b-main-sidebar__vb"><img ng-src="/assets/img/dummy/supplier/video.jpg" alt=""/></div>
+                    <p>{{api.model.whoWeAre|cutString:150:true}}</p>
+                    <a class="a-see_more" href="#/about#who-i-am">Read more &raquo;</a>
+                </div>
+                <div ng-if="api.model.onboarded" class="b-main-sidebar__block">
+                    <h2 class="b-main-subpage__subtitle">HOW I TEACH</h2>
+                    <p>{{api.model.howWeTeach|cutString:150:true}}</p>
+                    <a class="a-see_more" href="#/about#how-i-teach">Read more &raquo;</a>
+                </div>
+                <div ng-if="api.model.onboarded" class="b-main-sidebar__block">
+                    <h2 class="b-main-subpage__subtitle">WHO I TEACH</h2>
+                    <p>{{api.model.whoWeTeach|cutString:150:true}}</p>
+                </div>
+                <div class="b-main-sidebar__block">
+                    <h2 class="b-main-subpage__subtitle">WHERE I TEACH</h2>
+                    <div class="b-main-sidebar__map"><img ng-src="/assets/img/dummy/supplier/map.jpg" alt="map"/></div>
+                    <address>
+                        <p>{{api.model.street}} {{api.model.house}}</p>
+                        <p>{{api.model.zip}} {{api.model.city}}</p>
+                        <p>{{api.model.phone1}}</p>
+                    </address>
+                    <span ng-show="api.model.canVisitHomes" class="can-option"><span class="glyphicon glyphicon-ok"></span>Visit Private Homes</span>
+                    <span ng-show="api.model.canVisitCompanies" class="can-option"><span class="glyphicon glyphicon-ok"></span>Visit Companies</span>
+                    <a ng-if="api.model.onboarded" class="a-see_more" href="#/about#where-i-teach">Read more &raquo;</a>
+                </div>
+                <div ng-if="api.model.onboarded" class="b-main-sidebar__block">
+                    <h2 class="b-main-subpage__subtitle">WHAT PEOPLE THINK OF ME</h2>
+                    <div class="b-main-sidebar__fb">
+                        <b>13</b>
+                        <p>People recommend Marion</p>
+                        <ul class="peoples-list">
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/1.jpg" alt=""/></li>
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/2.jpg" alt=""/></li>
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/3.jpg" alt=""/></li>
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/4.jpg" alt=""/></li>
+                        </ul>
+                    </div>
+                    <div class="b-main-sidebar__fb">
+                        <b>4</b>
+                        <p>Teachers endorse Marion</p>
+                        <ul class="peoples-list">
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/1.jpg" alt=""/></li>
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/2.jpg" alt=""/></li>
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/3.jpg" alt=""/></li>
+                            <li><img ng-src="/assets/img/dummy/supplier/recomended/4.jpg" alt=""/></li>
+                        </ul>
+                    </div>
+                    <div class="b-main-sidebar__fb">
+                        <b>10</b><span>People say:</span>
+                        <p>Marion paid attention to me</p>
+                    </div>
+                    <div class="b-main-sidebar__fb">
+                        <b>9</b><span>People say:</span>
+                        <p>The class had an impact on my well-being</p>
+                    </div>
+                    <div class="b-main-sidebar__fb">
+                        <b>6</b><span>People say:</span>
+                        <p>I will definitely go again</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-right">
+            <div class="b-main-content">
+                <div ng-if="!api.model.onboarded" class="no_onboarded">
+                    <div class="w-blocks__content">
+                        <h2 class="b-main-title">Are you the owner of this business?</h2>
+                        <button class="claim-this_button">CLAIM THIS PAGE</button>
+                        <p>Do you think {{api.model.companyName}} should be on somuchmore? <a href="">Help us list it!</a></p>
+                    </div>
+                </div>
+                <div ng-if="api.model.onboarded">
+                    <div class="w-blocks__content">
+                        <h2 class="b-main-title">Try {{api.model.companyName}}</h2>
+                        <div class="b-main-block sb pb">
+                            <img ng-src="/assets/img/dummy/medium/yoga.jpg" alt="yoga"/>
+                            <em>Trial</em>
+                            <h3 class="b-main-block__title">Single Class</h3>
+                            <div class="b-mb__info">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <span>40&euro;</span>
+                                <b>25&euro;</b>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                        </div><!--
+                        --><div class="b-main-block sb pb">
+                            <img ng-src="/assets/img/dummy/medium/meditation.jpg" alt="yoga"/>
+                            <em>Trial</em>
+                            <h3 class="b-main-block__title">Group Class</h3>
+                            <div class="b-mb__info">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <span>40&euro;</span>
+                                <b>25&euro;</b>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                        </div><!--
+                        --><div class="b-main-block sb pb">
+                            <img ng-src="/assets/img/dummy/medium/selbst_bewusstsein.jpg" alt="yoga"/>
+                            <em>Trial</em>
+                            <h3 class="b-main-block__title">Month</h3>
+                            <div class="b-mb__info">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <span>40&euro;</span>
+                                <b>25&euro;</b>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                         </div>
+                    </div>
+                    <div class="w-blocks__content">
+                        <h2 class="b-main-title">Practice with {{api.model.companyName}}</h2>
+                        <div class="b-main-block mb pb">
+                            <img ng-src="/assets/img/dummy/medium/yoga.jpg" alt="yoga"/>
+                            <h3 class="b-main-block__title">SINGLE SESSIONS</h3>
+                            <div class="b-mb__info cf">
+                                <p>Detailed information about the offer goes here,
+                                    and click for more if you wish.</p>
+                                <p>Save up to <b>11&euro;</b> per session!</p>
+                                <div class="b-main-block__left">
+                                    <select>
+                                        <option value="0">10x (26&euro; per session)</option>
+                                        <option value="1">1x (37&euro; per session)</option>
+                                    </select>
+                                </div>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                        </div><!--
+                        --><div class="b-main-block mb pb">
+                            <img ng-src="/assets/img/dummy/medium/meditation.jpg" alt="yoga"/>
+                            <h3 class="b-main-block__title">GROUP SESSIONS</h3>
+                            <div class="b-mb__info cf">
+                                <p>Detailed information about the offer goes here,
+                                    and click for more if you wish.</p>
+                                <p>Save up to <b>11&euro;</b> per session!</p>
+                                <div class="b-main-block__left">
+                                    <select>
+                                        <option value="0">10x (26&euro; per session)</option>
+                                        <option value="1">1x (37&euro; per session)</option>
+                                    </select>
+                                </div>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-blocks__content">
+                        <h2 class="b-main-title">Special Events</h2>
+                        <div class="b-main-block sb pb">
+                            <img ng-src="/assets/img/dummy/medium/yoga.jpg" alt="yoga"/>
+                            <h3 class="b-main-block__title">Workshop</h3>
+                            <div class="b-mb__info">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <span>40&euro;</span>
+                                <b>25&euro;</b>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                        </div><!--
+                        --><div class="b-main-block sb pb">
+                            <img ng-src="/assets/img/dummy/medium/meditation.jpg" alt="yoga"/>
+                            <h3 class="b-main-block__title">Retreat</h3>
+                            <div class="b-mb__info">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <span>40&euro;</span>
+                                <b>25&euro;</b>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                        </div><!--
+                        --><div class="b-main-block sb pb">
+                            <img ng-src="/assets/img/dummy/medium/selbst_bewusstsein.jpg" alt="yoga"/>
+                            <h3 class="b-main-block__title">Special Event</h3>
+                            <div class="b-mb__info">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <span>40&euro;</span>
+                                <b>25&euro;</b>
+                                <button class="b-mb-book_button" type="button">BUCHEN</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-blocks__sub">
+                        <h2 class="b-main-title">Private Sessions</h2>
+                        <table class="b-main-profile__table">
+                            <thead>
+                                <tr>
+                                    <th class="type">Type</th>
+                                    <th class="duration">Dur (min)</th>
+                                    <th class="venue">Venue</th>
+                                    <th class="price">Price</th>
+                                    <th class="book"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="spacer">
+                                    <td colspan="6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="type"><b>Lotus Flow</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td class="duration"><select><option value="0">30</option><option value="1">60</option><option value="2">90</option></select></td>
+                                    <td class="venue"><select><option value="0">Lorem Ipsum 1</option><option value="1">Lorem Ipsum 2</option><option value="2">Lorem Ipsum 3</option></select></td>
+                                    <td class="price"><span>40&euro;</span><b>25&euro;</b></td>
+                                    <td class="book"><button class="b-mb-book_button" type="button">BUCHEN</button></td>
+                                </tr>
+                                <tr class="spacer">
+                                    <td colspan="6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="type"><b>Basic English</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td class="duration"><select><option value="0">30</option><option value="1">60</option><option value="2">90</option></select></td>
+                                    <td class="venue"><select><option value="0">Lorem Ipsum 1</option><option value="1">Lorem Ipsum 2</option><option value="2">Lorem Ipsum 3</option></select></td>
+                                    <td class="price"><span>40&euro;</span><b>25&euro;</b></td>
+                                    <td class="book"><button class="b-mb-book_button" type="button">BUCHEN</button></td>
+                                </tr>
+                                <tr class="spacer">
+                                    <td colspan="6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="type"><b>Medium Vinyasa</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td class="duration"><select><option value="0">30</option><option value="1">60</option><option value="2">90</option></select></td>
+                                    <td class="venue"><select><option value="0">Lorem Ipsum 1</option><option value="1">Lorem Ipsum 2</option><option value="2">Lorem Ipsum 3</option></select></td>
+                                    <td class="price"><span>40&euro;</span><b>25&euro;</b></td>
+                                    <td class="book"><button class="b-mb-book_button" type="button">BUCHEN</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="w-blocks__sub">
+                        <h2 class="b-main-title">Group Sessions</h2>
+                        <table class="b-main-profile__table">
+                            <thead>
+                                <tr>
+                                    <th class="starts">Starts</th>
+                                    <th class="type">Type</th>
+                                    <th class="duration">Dur (min)</th>
+                                    <th class="venue">Venue</th>
+                                    <th class="price">Price</th>
+                                    <th class="book"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="spacer">
+                                    <td colspan="6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="starts">09:00</td>
+                                    <td class="type"><b>Lotus Flow</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td class="duration"><select><option value="0">30</option><option value="1">60</option><option value="2">90</option></select></td>
+                                    <td class="venue"><select><option value="0">Lorem Ipsum 1</option><option value="1">Lorem Ipsum 2</option><option value="2">Lorem Ipsum 3</option></select></td>
+                                    <td class="price"><span>40&euro;</span><b>25&euro;</b></td>
+                                    <td class="book"><button class="b-mb-book_button" type="button">BUCHEN</button></td>
+                                </tr>
+                                <tr class="spacer">
+                                    <td colspan="6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="starts">10:00</td>
+                                    <td class="type"><b>Basic English</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td class="duration"><select><option value="0">30</option><option value="1">60</option><option value="2">90</option></select></td>
+                                    <td class="venue"><select><option value="0">Lorem Ipsum 1</option><option value="1">Lorem Ipsum 2</option><option value="2">Lorem Ipsum 3</option></select></td>
+                                    <td class="price"><span>40&euro;</span><b>25&euro;</b></td>
+                                    <td class="book"><button class="b-mb-book_button" type="button">BUCHEN</button></td>
+                                </tr>
+                                <tr class="spacer">
+                                    <td colspan="6"></td>
+                                </tr>
+                                <tr>
+                                    <td class="starts">11:00</td>
+                                    <td class="type"><b>Medium Vinyasa</b>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td class="duration"><select><option value="0">30</option><option value="1">60</option><option value="2">90</option></select></td>
+                                    <td class="venue"><select><option value="0">Lorem Ipsum 1</option><option value="1">Lorem Ipsum 2</option><option value="2">Lorem Ipsum 3</option></select></td>
+                                    <td class="price"><span>40&euro;</span><b>25&euro;</b></td>
+                                    <td class="book"><button class="b-mb-book_button" type="button">BUCHEN</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

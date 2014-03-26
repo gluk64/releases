@@ -1,0 +1,134 @@
+@import "../_base/base";
+
+.ngTagsInput *, *:before, *:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.ngTagsInput {
+    position: relative;
+    margin: -2px 6px 2px -2px;
+}
+
+.ngTagsInput:active {
+    outline: none;
+}
+
+.ngTagsInput .tags {
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    background-color: white;
+    background-color: -moz-field;
+    border: 1px solid $colorLight;
+    margin-top: 5px;
+    padding: 2px 2px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    font-size: 14px;
+    cursor: text;
+}
+
+.ngTagsInput .tags.focused {
+    outline: none;
+    -webkit-box-shadow: 0px 0px 3px 1px $colorLight;
+    -moz-box-shadow: 0px 0px 3px 1px $colorLight;
+    box-shadow: 0px 0px 3px 1px $colorLight;
+}
+
+.ngTagsInput .tags .tag-list {
+    margin: 0px;
+    padding: 0px;
+    overflow: visible;
+    list-style-type: none;
+}
+
+.ngTagsInput .tags .tag-item {
+    margin: 2px;
+    padding-left: 4px;
+    display: inline-block;
+    height: 20px;
+    line-height: 1.3;
+    float: left;
+    @include my-border-radius(2px);
+    border: 1px solid $colorLight;
+    background: $colorLight;
+}
+
+.ngTagsInput .tags .tag-item.selected {
+    opacity: 0.7;
+}
+
+.ngTagsInput .tags .tag-item span {
+    font-size: 12px;
+    font-family: $fontBold;
+    display: inline;
+    color: #fff;
+}
+
+.ngTagsInput .tags .tag-item button {
+    margin: 0px;
+    border: none;
+    background: none;
+    color: #fff;
+    cursor: pointer;
+    font: bold 16px Arial, sans-serif;
+    vertical-align: middle;
+}
+
+.ngTagsInput .tags .tag-input {
+    border: 0px;
+    outline: none;
+    margin: 2px;
+    width: auto;
+    padding: 0px 0px 0px 4px;
+    height: 20px;
+    float: left;
+    font: 13px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.ngTagsInput .tags input::-ms-clear {
+    display: none;
+}
+.ngTagsInput .autocomplete {
+    margin-top: 5px;
+    position: absolute;
+    padding: 8px 0;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    width: 100%;
+    z-index: 999;
+}
+
+.ngTagsInput .autocomplete .suggestion-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.ngTagsInput .autocomplete .suggestion-item {
+    padding: 3px 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+    cursor: pointer;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ngTagsInput .autocomplete .suggestion-item.selected {
+    color: #fff;
+    background-color: #0097cf
+}
+
+.ngTagsInput .autocomplete .suggestion-item em {
+    display: inline;
+    font-style: normal;
+    font-size: 16px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
